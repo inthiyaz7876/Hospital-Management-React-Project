@@ -66,9 +66,12 @@ export default class MedicenToPatient extends Component {
     super(props);
   }
   render() {
+    const {data} = this.props;
 const getTabs = (e, row) => {
   
 }
+const date = new Date();
+const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-'+date.getHours()+':'+date.getMinutes();
         const colmns = [];
         for (let i = 0;i < columns.length; i++) {
             colmns.push({
@@ -87,7 +90,6 @@ const getTabs = (e, row) => {
                 },
             })
         };
-
 
     return (
       <div>
@@ -112,7 +114,42 @@ const getTabs = (e, row) => {
               </div>
             )
           }
-        </ToolkitProvider></div>
+        </ToolkitProvider>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">Id: {data.id}</div>
+              <div class="col-sm-3">Name: {data.name}</div>
+              <div class="col-sm-3">Age: {data.age}</div>
+              <div class="col-sm-3">Date: {currentDate}</div>
+            </div>
+            <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-3">Serial Number</div>
+              <div class="col-sm-3">Medicen Name</div>
+              <div class="col-sm-3">Number of Tablets</div>
+              <div class="col-sm-3">Amount</div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-3">Serial Number</div>
+              <div class="col-sm-3">Medicen Name</div>
+              <div class="col-sm-3">Number of Tablets</div>
+              <div class="col-sm-3">Amount</div>
+            </div>
+            
+            <div class="row">
+              <div class="col-sm-3">Total Amount</div>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">5000</div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        </div>
     )
   }
 }
