@@ -56,6 +56,7 @@ const products = [ {id : 1, name: "Test1", expireDate: '12/20/2020', stack: 200 
     };
 
 export default class MedicalsTable extends Component {
+
   render() {
     return (
       <div>
