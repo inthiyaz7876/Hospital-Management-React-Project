@@ -84,7 +84,6 @@ export default class PatientTable extends Component {
     const getRow = (e, row) => {
       this.setState({isMedicen: true});
       this.setState({data: row});
-      console.log('row', row);
     }
       const colmns = [];
         for (let i = 0;i < columns.length; i++) {

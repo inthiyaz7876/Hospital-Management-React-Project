@@ -64,12 +64,25 @@ const products = [
 export default class MedicenToPatient extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      enteredNumber: 0,
+      valuedData: '',
+      tabData: []
+    }
   }
   render() {
     const {data} = this.props;
+    const {valuedData, enteredNumber, tabData} = this.state;
 const getTabs = (e, row) => {
-  
+  this.setState({valuedData:row});
+   tabData.push(row);
 }
+
+
+const setNumber = (e) => {
+  this.setState({enteredNumber: e.target.value});
+}
+console.log("00", tabData);
 const date = new Date();
 const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-'+date.getHours()+':'+date.getMinutes();
         const colmns = [];
@@ -81,7 +94,7 @@ const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-
                     if (columns[i].dataField === 'button') {
                         return (
                             <div>
-                                <input type='number' />
+                                <input  onChange={(e)=>setNumber(e)}type='number' />
                                 <button className="IconMiu" onClick={(e)=>getTabs(e, row)}>Add</button>
                             </div>
                         );
