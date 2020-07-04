@@ -21,7 +21,7 @@ const columns = [{
   text: 'Age'
 }, {
   dataField: 'problem',
-  text: 'problem'
+  text: 'Problem'
 },{
   dataField: 'joined',
   text: 'Joined Date'
