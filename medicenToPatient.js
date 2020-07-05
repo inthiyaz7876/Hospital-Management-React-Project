@@ -67,14 +67,17 @@ export default class MedicenToPatient extends Component {
     this.state = {
       enteredNumber: 0,
       valuedData: '',
-      tabData: []
+      tabData: [],
+      totalAmount: []
     }
   }
   render() {
     const {data} = this.props;
-    const {valuedData, enteredNumber, tabData} = this.state;
+    const {valuedData, enteredNumber, tabData, totalAmount} = this.state;
 const getTabs = (e, row) => {
   this.setState({valuedData:row});
+  console.log("entered", row.cost, enteredNumber)
+  totalAmount.push(row.cost*enteredNumber);
    tabData.push(row);
 }
 
@@ -82,7 +85,7 @@ const getTabs = (e, row) => {
 const setNumber = (e) => {
   this.setState({enteredNumber: e.target.value});
 }
-console.log("00", tabData);
+console.log("00", tabData, totalAmount);
 const date = new Date();
 const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-'+date.getHours()+':'+date.getMinutes();
         const colmns = [];
@@ -144,13 +147,17 @@ const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-
               <div class="col-sm-3">Number of Tablets</div>
               <div class="col-sm-3">Amount</div>
             </div>
-
-            <div class="row">
-              <div class="col-sm-3">Serial Number</div>
-              <div class="col-sm-3">Medicen Name</div>
-              <div class="col-sm-3">Number of Tablets</div>
-              <div class="col-sm-3">Amount</div>
+              {
+                tabData.map((item,i)=> {
+                  return <div class="row">
+              <div class="col-sm-3">{i+1}</div>
+              <div class="col-sm-3">{item.name}</div>
+              <div class="col-sm-3">{item.cost}</div>
+              <div class="col-sm-3">{valuedData.cost*enteredNumber}</div>
             </div>
+                })
+              }
+            
             
             <div class="row">
               <div class="col-sm-3">Total Amount</div>
