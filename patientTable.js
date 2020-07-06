@@ -72,7 +72,8 @@ export default class PatientTable extends Component {
     super(props);
     this.state= {
       isMedicen: false, 
-      data: ''
+      data: '',
+      patientData: ''
     }
   }
 
@@ -80,10 +81,13 @@ export default class PatientTable extends Component {
      console.log("e", e.targe.value);
   }
   render() {
-    const {isMedicen, data} = this.state;
+    const {isMedicen, data, patientData} = this.state;
     const getRow = (e, row) => {
       this.setState({isMedicen: true});
       this.setState({data: row});
+    }
+    const setPatientData = (e, row) => {
+      this.setState({patientData: row});
     }
       const colmns = [];
         for (let i = 0;i < columns.length; i++) {
@@ -94,7 +98,7 @@ export default class PatientTable extends Component {
                     if (columns[i].dataField === 'button') {
                         return (
                             <div>
-                                <button className="IconMiu">Presciption</button>
+                                <button className="IconMiu" onClick={e=>setPatientData(e, row)} data-toggle="modal" data-target="#myModal1">Presciption</button>
                                 <button className="IconMiu" onClick={(e)=>getRow(e, row)}>Medicen</button>
                             </div>
                         );
@@ -132,6 +136,48 @@ export default class PatientTable extends Component {
           }
         </ToolkitProvider>
       }
+      <div>
+          <div class="modal" id="myModal1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Patient details</h4>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="usr">Medicen Name:</label>
+                    <input type="text" placeholder={patientData.name} class="form-control"  id="usr" disabled />
+                  </div>
+                   <div class="form-group">
+                    <label for="usr">Patient Problem</label>
+                    <input type="text" placeholder={patientData.problem}class="form-control" id="usr" disabled />
+                  </div>
+                   <div class="form-group">
+                    <label for="usr">Age</label>
+                    <input type="text" placeholder={patientData.age}class="form-control" id="usr" disabled />
+                  </div>
+                  <div class="form-group">
+                    <label for="usr">Assigned Doctor</label>
+                    <input type="text" placeholder={patientData.name}class="form-control" id="usr" disabled/>
+                  </div>
+                   <div class="form-group">
+                  <label for="comment">Prescription</label>
+                  <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+                 
+                  <div>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+      </div>
       </div>
     )
   }

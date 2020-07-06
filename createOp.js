@@ -47,18 +47,16 @@ export default class CreateOp extends Component {
           <label for="usr">Mobile:</label>
           <input type="text" class="form-control" id="usr" />
         </div>
-
-        <div>
-          <select defaultValue={doc}
-            onChange={this.getDropValue}
-          >
-            <option value="notSelected">Select Doctor</option>
-            <option value="Inthiyaz">Shaik Inthiyaz </option>
-            <option value="Nandhu">Nandhu</option>
-            <option value="Mukesh">Mukesh</option>
-            <option value="Surekha">Surekha</option>
+        <div class="form-group">
+          <label for="sel1">Select Doctor</label>
+          <select class="form-control" id="sel1">
+           <option>Doctor</option>
+            <option>Shaik Inthiyaz ali - Dental</option>
+            <option>Nandu - General</option>
+            <option>Surekha - General</option>
+            <option>Mohan Reddy - General</option>
           </select>
-        </div>
+        </div>  
         <h6>Select Lab Tests</h6>
         <div class="form-check-inline">
           <label class="form-check-label">
