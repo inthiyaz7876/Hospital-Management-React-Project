@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import './style';
 import Main from './main';
 import Header from './header';
 import Dashboard from './dashboard';
@@ -9,20 +10,23 @@ import MedicalsTable from './medicalsTable';
 import MedicenToPatient from './medicenToPatient';
 import CreateOp from './createOp';
 import Admin from './admin';
+import Login from './login';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: 'React'
+     isAccess: false
     };
   }
 
   render() {
+    const { isAccess}= this.state;
     return (
-
       <div>
+      { isAccess ? 
+        <div>
         <Header />
         <div class="container-fluid">
           <div class="row">
@@ -41,7 +45,11 @@ class App extends Component {
             </div>
           </div>
         </div>
+      </div> :
+      <Login />
+      }
       </div>
+      
     );
   }
 }
