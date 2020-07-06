@@ -21,11 +21,18 @@ class App extends Component {
     };
   }
 
+  getData = (data) =>{
+         this.setState({isAccess: data}); 
+    }
   render() {
-    const { isAccess}= this.state;
+    const getLoginAccess = (e) => {
+        console.log('inside login', e)
+
+    }
+    const { isAccess }= this.state;
     return (
-      <div>
-      { isAccess ? 
+      // <div>
+      // { isAccess ? 
         <div>
         <Header />
         <div class="container-fluid">
@@ -45,10 +52,11 @@ class App extends Component {
             </div>
           </div>
         </div>
-      </div> :
-      <Login />
-      }
-      </div>
+      </div> 
+      // :
+      // <Login sendData={this.getData}/>
+      // }
+      // </div>
       
     );
   }
