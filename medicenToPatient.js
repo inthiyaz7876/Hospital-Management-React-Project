@@ -74,18 +74,21 @@ export default class MedicenToPatient extends Component {
   render() {
     const {data} = this.props;
     const {valuedData, enteredNumber, tabData, totalAmount} = this.state;
-const getTabs = (e, row) => {
-  this.setState({valuedData:row});
-  console.log("entered", row.cost, enteredNumber)
-  totalAmount.push(row.cost*enteredNumber);
-   tabData.push(row);
+    const setNumber = (e) => {
+  const b= e.target.value;
+ this.setState({enteredNumber: b});
+ 
 }
+    const getTabs = (e, row,a) => {
+      const {enteredNumber} = this.state;
+      this.setState({valuedData:row});
+      row.total = (row.cost*enteredNumber)
+      tabData.push(row);
+    }
+
+      totalAmount = tabData.map((item)=>(item = item.total));
 
 
-const setNumber = (e) => {
-  this.setState({enteredNumber: e.target.value});
-}
-console.log("00", tabData, totalAmount);
 const date = new Date();
 const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-'+date.getHours()+':'+date.getMinutes();
         const colmns = [];
@@ -98,7 +101,7 @@ const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-
                         return (
                             <div>
                                 <input  onChange={(e)=>setNumber(e)}type='number' />
-                                <button className="IconMiu" onClick={(e)=>getTabs(e, row)}>Add</button>
+                                <button className="IconMiu" onClick={(e)=>getTabs(e, row, enteredNumber)}>Add</button>
                             </div>
                         );
                     }
@@ -153,7 +156,7 @@ const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-
               <div class="col-sm-3">{i+1}</div>
               <div class="col-sm-3">{item.name}</div>
               <div class="col-sm-3">{item.cost}</div>
-              <div class="col-sm-3">{valuedData.cost*enteredNumber}</div>
+              <div class="col-sm-3">{item.total}</div>
             </div>
                 })
               }
@@ -163,7 +166,7 @@ const currentDate = date.getDate()+'/'+date.getMonth()+'/'+date.getFullYear()+'-
               <div class="col-sm-3">Total Amount</div>
               <div class="col-sm-3"></div>
               <div class="col-sm-3"></div>
-              <div class="col-sm-3">5000</div>
+              <div class="col-sm-3">{totalAmount.reduce((a, b) => a + b, 0)}</div>
             </div>
           </div>
         </div>
