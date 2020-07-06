@@ -8,6 +8,7 @@ import PatientTable from './patientTable';
 import MedicalsTable from './medicalsTable';
 import MedicenToPatient from './medicenToPatient';
 import CreateOp from './createOp';
+import Admin from './admin';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path='/' component={Dashboard} />
                   <Route path='/patient' component={PatientTable} />
+                  <Route path='/admin' component={Admin} />
                   <Route path='/createOp' component={CreateOp} />
                   <Route path='/medicenToPatient' component={MedicenToPatient} />
                   <Route path='/medical' component={MedicalsTable} />

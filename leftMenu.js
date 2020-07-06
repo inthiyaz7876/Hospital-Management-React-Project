@@ -21,6 +21,8 @@ export default class LeftMenu extends Component {
       <div>
         <div>
           <button style={{ width: '100%', marginTop: 10 }} type="button" class="btn btn-success" onClick={() => this.handlePageChange('/')}>Dashboard</button></div>
+           <div>
+          <button style={{ width: '100%', marginTop: 10 }} type="button" class="btn btn-success" onClick={() => this.handlePageChange('admin')}>Admin</button></div>
         <div>
           <button style={{ width: '100%', marginTop: 10 }} type="button" class="btn btn-success" onClick={() => this.handlePageChange('createOp')} >Create OP</button></div>
         <div><button style={{ width: '100%', marginTop: 10 }} type="button" onClick={() => this.handlePageChange('medical')} class="btn btn-success">Pharmacy</button></div>
