@@ -23,10 +23,10 @@ class Login extends Component {
     const getLogin = (e) => {
         const { userName, userPassword } = this.state;
         if (userName === 'shaikali' && userPassword === 'developer') {
-          return sendData(true);
+         window.location = '/dashboard';
         } else {
            this.setState({validation: true});
-          return sendData(false);
+           window.location = '/';
         }
     }
     return (
@@ -46,7 +46,6 @@ class Login extends Component {
                <div class='loginError' style={{color: 'red'}}>Please check Name/Password</div>
                : null
             }
-           
             <div class="row">
               <div class="col-sm-6"><button type="button" class="btn btn-primary">Forgot Password</button></div>
               <div class="col-sm-6"><button type="button" onClick={()=>getLogin()} class="btn btn-success">Login</button></div>

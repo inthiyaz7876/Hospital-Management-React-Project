@@ -25,23 +25,23 @@ class App extends Component {
          this.setState({isAccess: data}); 
     }
   render() {
-    const getLoginAccess = (e) => {
-        console.log('inside login', e)
-
-    }
     const { isAccess }= this.state;
     return (
-      // <div>
-      // { isAccess ? 
         <div>
-        <Header />
+        { (window.location.pathname === '/') ?
+              null :
+              <Header /> 
+        }
         <div class="container-fluid">
           <div class="row">
+           { (window.location.pathname === '/') ? null :
             <div class="col-sm-2" style={{ height: '92vh', backgroundColor: '#f3f4f8' }}><LeftMenu /></div>
+           }
             <div class="col-sm-10">
                 <Router>
                 <Switch>
-                  <Route exact path='/' component={Dashboard} />
+                  <Route exact path='/' component={Login} />
+                  <Route exact path='/dashboard' component={Dashboard} />
                   <Route path='/patient' component={PatientTable} />
                   <Route path='/admin' component={Admin} />
                   <Route path='/createOp' component={CreateOp} />
@@ -53,11 +53,6 @@ class App extends Component {
           </div>
         </div>
       </div> 
-      // :
-      // <Login sendData={this.getData}/>
-      // }
-      // </div>
-      
     );
   }
 }
